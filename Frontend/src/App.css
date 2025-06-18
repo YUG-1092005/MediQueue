@@ -1,0 +1,150 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  z-index: 9999;
+}
+
+.loader-video {
+  width: min(25vw, 300px);
+  height: min(25vw, 300px);
+  min-width: 80px;
+  min-height: 80px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+/* Mobile devices (portrait) */
+@media (max-width: 480px) and (orientation: portrait) {
+  .loader-video {
+    width: 35vw;
+    height: 35vw;
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 80px;
+    min-height: 80px;
+  }
+}
+
+/* Mobile devices (landscape) */
+@media (max-width: 768px) and (orientation: landscape) {
+  .loader-video {
+    width: 20vh;
+    height: 20vh;
+    max-width: 120px;
+    max-height: 120px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+}
+
+/* Tablets (portrait) */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+  .loader-video {
+    width: 30vw;
+    height: 30vw;
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 100px;
+    min-height: 100px;
+  }
+}
+
+/* Tablets (landscape) and small laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .loader-video {
+    width: 25vw;
+    height: 25vw;
+    max-width: 250px;
+    max-height: 250px;
+    min-width: 120px;
+    min-height: 120px;
+  }
+}
+
+/* Laptops and desktops */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .loader-video {
+    width: 20vw;
+    height: 20vw;
+    max-width: 280px;
+    max-height: 280px;
+    min-width: 150px;
+    min-height: 150px;
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1441px) {
+  .loader-video {
+    width: 15vw;
+    height: 15vw;
+    max-width: 320px;
+    max-height: 320px;
+    min-width: 200px;
+    min-height: 200px;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1921px) {
+  .loader-video {
+    width: 12vw;
+    height: 12vw;
+    max-width: 350px;
+    max-height: 350px;
+    min-width: 250px;
+    min-height: 250px;
+  }
+}
+
+/* Very small screens (like older phones) */
+@media (max-width: 320px) {
+  .loader-video {
+    width: 40vw;
+    height: 40vw;
+    max-width: 120px;
+    max-height: 120px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+}
+
+/* High DPI screens adjustment */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .loader-video {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+.loader-video.small {
+  width: min(15vw, 150px);
+  height: min(15vw, 150px);
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.loader-video.large {
+  width: min(35vw, 400px);
+  height: min(35vw, 400px);
+  min-width: 200px;
+  min-height: 200px;
+}
+
+/* For extremely responsive behavior */
+.loader-video.ultra-responsive {
+  width: clamp(60px, 25vmin, 300px);
+  height: clamp(60px, 25vmin, 300px);
+}

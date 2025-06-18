@@ -1,0 +1,171 @@
+/* ngos.css */
+.ngos-section {
+  padding: 6rem 1rem;
+  background-color: #f9fafb;
+}
+
+.ngos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ngos-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ngos-header h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.ngos-header p {
+  font-size: 1.1rem;
+  color: #6b7280;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ngos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .ngos-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ngos-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+
+.ngos-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ngos-image-wrapper {
+  height: 200px;
+  overflow: hidden;
+}
+
+.ngos-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ngos-card-body {
+  padding: 1rem;
+}
+
+.ngos-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.ngos-id {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 1rem;
+}
+
+.ngos-details {
+  margin-top: 1rem;
+}
+
+.ngos-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #374151;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.ngos-icon {
+  color: #2563eb;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.ngos-description {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-top: 0.5rem;
+}
+
+.ngos-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.ngos-button {
+  flex: 1;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.ngos-button.outline {
+  background-color: transparent;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+.ngos-button-icon {
+  margin-right: 0.5rem;
+}
+
+.ngos-toggle-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  color: #2563eb;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ngos-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 1rem;
+  max-width: 400px;
+}
+
+.ngos-search-icon {
+  margin-right: 8px;
+  color: #888;
+}
+
+.ngos-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}

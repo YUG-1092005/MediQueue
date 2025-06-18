@@ -1,0 +1,156 @@
+.about-section {
+  padding: 5rem 1rem;
+  background-color: #f9fafb; 
+}
+
+.about-container {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827; 
+  margin-bottom: 1.5rem;
+}
+
+.about-subtitle {
+  font-size: 1.1rem;
+  color: #4b5563; 
+  max-width: 64rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Cards Grid */
+.about-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .about-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card */
+.about-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-circle {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.blue-bg {
+  background-color: #bfdbfe; /* blue-100 */
+}
+
+.green-bg {
+  background-color: #bbf7d0; /* green-100 */
+}
+
+.purple-bg {
+  background-color: #ddd6fe; /* purple-100 */
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.blue-icon {
+  color: #2563eb; /* blue-600 */
+}
+
+.green-icon {
+  color: #16a34a; /* green-600 */
+}
+
+.purple-icon {
+  color: #7c3aed; /* purple-600 */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  color: #4b5563;
+  max-width: 22rem;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+/* Problems Section */
+.problem-section {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.problem-title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .problem-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+.problem-subtitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.blue-text {
+  color: #2563eb;
+}
+
+.green-text {
+  color: #16a34a;
+}
+
+.problem-text {
+  color: #374151; /* gray-700 */
+  line-height: 1.6;
+  text-align: left;
+}
