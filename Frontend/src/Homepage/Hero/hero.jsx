@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import "./hero.css";
 
@@ -10,7 +10,7 @@ export const Hero = () => {
     setShowVideo(true);
     // Scroll to video
     setTimeout(() => {
-      videoRef.current?.scrollIntoView({ behavior: 'smooth' });
+      videoRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };
 
@@ -19,20 +19,17 @@ export const Hero = () => {
       <div className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">
-            Smart Health. 
-            <span className="gradient-text">
-              Zero Waste.
-            </span>
+            Smart Health.
+            <span className="gradient-text">Zero Waste.</span>
           </h1>
           <p className="hero-subtitle">
-            Revolutionizing healthcare with intelligent queue management and medical inventory optimization. 
-            Reduce waiting times and eliminate waste with our cutting-edge dual platform solution.
+            Revolutionizing healthcare with intelligent queue management and
+            medical inventory optimization. Reduce waiting times and eliminate
+            waste with our cutting-edge dual platform solution.
           </p>
 
           <div className="hero-buttons">
-            <a className="btn-primary">
-              Explore Solutions
-            </a>
+            <a className="btn-primary">Explore Solutions</a>
             <button className="btn-secondary" onClick={handleShowVideo}>
               View Overview Video
             </button>
@@ -41,9 +38,9 @@ export const Hero = () => {
           {/* Video section - will appear below buttons on smaller screens */}
           {showVideo && (
             <div ref={videoRef} className="hero-video-container">
-              <video 
+              <video
                 className="hero-video"
-                src="/Mediqueue_overview.mp4"
+                src={import.meta.env.VITE_APP_OVERVIEW_VIDEO}
                 autoPlay
                 muted
                 controls
