@@ -17,8 +17,25 @@ const io = new Server(server, {
 // Make io accessible via app
 app.set("io", io);
 
-app.use(cors());
-app.use(cors({ origin: "https://medi-queue.vercel.app/" || "*" }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "https://medi-queue.vercel.app",
+        "http://localhost:5173"
+      ];
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS: " + origin));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
+
 app.use(express.json());
 
 // Middleware to log requests
