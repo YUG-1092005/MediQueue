@@ -19,8 +19,7 @@ const PORT = process.env.VITE_MAIN_SERVER_PORT || 8000;
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Match the origin with or without the trailing slash
-      if (origin === process.env.VITE_FRONTEND_URL) {
+      if (!origin || origin === process.env.VITE_FRONTEND_URL || origin === "http://localhost:5173") {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
@@ -30,6 +29,7 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
+
 
 //Logging for error handling
 app.use((req, res, next) => {
