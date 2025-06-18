@@ -20,12 +20,15 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDB();
 
-app.use(cors());
-// CORS configuration
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (origin === process.env.VITE_FRONTEND_URL || origin === "http://localhost:5173") {
+      // Allow undefined (Postman, same-origin) or matching allowed domains
+      if (
+        !origin ||
+        origin === process.env.VITE_FRONTEND_URL || 
+        origin === "http://localhost:5173"
+      ) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
