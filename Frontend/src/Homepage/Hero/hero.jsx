@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import "./hero.css";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   const [showVideo, setShowVideo] = useState(false);
@@ -31,22 +32,11 @@ export const Hero = () => {
           <div className="hero-buttons">
             <a className="btn-primary">Explore Solutions</a>
             <button className="btn-secondary" onClick={handleShowVideo}>
-              View Overview Video
+              <Link to={"https://drive.google.com/file/d/1MIjs1Bux9Zx8A5MYemCf5H94kVxy2GlB/view?usp=sharing"} style={{textDecoration:"none", color:"#1260CC"}}>
+              View Overview 
+              </Link>
             </button>
           </div>
-
-          {/* Video section - will appear below buttons on smaller screens */}
-          {showVideo && (
-            <div ref={videoRef} className="hero-video-container">
-              <video
-                className="hero-video"
-                src={import.meta.env.VITE_APP_OVERVIEW_VIDEO}
-                autoPlay
-                muted
-                controls
-              />
-            </div>
-          )}
         </div>
 
         <div className="hero-icon">
