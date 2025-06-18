@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# .gitignore
+Frontend/public/Mediqueue_overview.mp4
 node_modules
 dist
 dist-ssr
