@@ -19,10 +19,14 @@ const PORT = process.env.VITE_MAIN_SERVER_PORT || 8000;
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || origin === process.env.VITE_FRONTEND_URL || origin === "http://localhost:5173") {
+      const allowedOrigins = [
+        "https://medi-queue.vercel.app",
+        "http://localhost:5173"
+      ];
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error("Not allowed by CORS: " + origin));
       }
     },
     credentials: true,
