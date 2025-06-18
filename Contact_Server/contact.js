@@ -4,7 +4,7 @@ const contactRouter = require('./routes/contact');
 const app = express();
 
 app.use(cors());
-app.use(cors({ origin: process.env.VITE_FRONTEND_URL || "*" }));
+app.use(cors({ origin: "https://medi-queue.vercel.app" || "*" }));
 app.use(express.json());4
 
 // Contact management endpoints

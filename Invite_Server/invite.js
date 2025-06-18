@@ -23,20 +23,18 @@ connectDB();
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow undefined (Postman, same-origin) or matching allowed domains
-      if (
-        !origin ||
-        origin === process.env.VITE_FRONTEND_URL || 
-        origin === "http://localhost:5173"
-      ) {
+      const allowedOrigins = [
+        "https://medi-queue.vercel.app",
+        "http://localhost:5173"
+      ];
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error("Not allowed by CORS: " + origin));
       }
     },
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
