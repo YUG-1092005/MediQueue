@@ -141,7 +141,7 @@ const Clinics = () => {
           </div>
         </div>
 
-        <div className="clinics-grid">
+        {/* <div className="clinics-grid">
           {filteredClinics.length > 0 ? (
             filteredClinics.map((clinic) => {
               const clinicId = clinic._id || clinic.shortId;
@@ -170,7 +170,6 @@ const Clinics = () => {
                       Clinic ID: MediQueue-{clinic.shortId}
                     </p>
 
-                    {/* Always show details */}
                     <div className="clinics-details">
                       <div className="clinics-detail">
                         <FaMapMarkerAlt className="clinics-icon" />
@@ -231,7 +230,6 @@ const Clinics = () => {
                           </>
                         )}
 
-                        {/* Dashboard: only for doctors in this clinic */}
                         {currentUser &&
                           currentUser.clinicMemberships &&
                           currentUser.clinicMemberships.some(
@@ -304,12 +302,183 @@ const Clinics = () => {
               );
             })
           ) : (
-            <div className="no-results">
-              <p> No clinics found/added matching your search.</p>
-              <p>Try adjusting your keywords or check spelling.</p>
+            <div className="clinic-card demo-card">
+              <h3>🏥 Sample Clinic (Demo)</h3>
+              <p>Location: Ahmedabad</p>
+              <p>Speciality: General Medicine</p>
+              <p className="demo-note">
+                No clinics found. This is a sample preview — clinics will appear
+                once added or matching your search.
+              </p>
             </div>
           )}
+        </div> */}
+        <div className="clinics-grid">
+  {clinics.length === 0 ? (
+    <div className="clinic-card demo-card">
+      <h3>🏥 Sample Clinic (Demo)</h3>
+      <p>Location: Ahmedabad</p>
+      <p>Speciality: General Medicine</p>
+      <p className="demo-note">
+        No clinics added yet. This is a sample preview — clinics will appear once created by an admin.
+      </p>
+    </div>
+  ) : filteredClinics.length === 0 ? (
+    <div className="clinic-card demo-card">
+      <h3>😕 No Matching Clinics</h3>
+      <p className="demo-note">
+        No clinics found for your search. Try changing keywords or filters.
+      </p>
+    </div>
+  ) : (
+    filteredClinics.map((clinic) => {
+      const clinicId = clinic._id || clinic.shortId;
+      const isCreator = clinic.userId === loggedInUserId;
+
+      return (
+        <div className="clinics-card" key={clinicId}>
+          <div className="clinics-image-wrapper">
+            {clinic.clinicImage && (
+              <img
+                src={clinic.clinicImage}
+                alt={clinic.clinicName}
+                className="clinics-image"
+              />
+            )}
+          </div>
+          <div className="clinics-card-body">
+            <h3 className="clinics-title">{clinic.clinicName}</h3>
+            <p className="clinics-id">
+              Clinic ID: MediQueue-{clinic.shortId}
+            </p>
+
+            <div className="clinics-details">
+              <div className="clinics-detail">
+                <FaMapMarkerAlt className="clinics-icon" />
+                <span>{clinic.clinicAddress}</span>
+              </div>
+              <div className="clinics-detail">
+                <FaPhone className="clinics-icon" />
+                <span>{clinic.clinicPhone}</span>
+              </div>
+              <p className="clinics-description">
+                {clinic.clinicDescription}
+              </p>
+              <div className="clinics-actions">
+                <Link
+                  to={`/queue-management?clinic=${clinicId}`}
+                  className={`clinics-button${!currentUser ? " disabled" : ""}`}
+                  onClick={(e) => {
+                    if (!currentUser) {
+                      e.preventDefault();
+                      toast.error("Please log in to join queues.", {
+                        position: "bottom-right",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        theme: "dark",
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                      });
+                    }
+                  }}
+                >
+                  <FaUsers className="clinics-button-icon" /> Queue Management
+                </Link>
+
+                {isCreator && (
+                  <>
+                    <Link
+                      to={`/inventory-management?clinic=${clinicId}`}
+                      className="clinics-button outline"
+                    >
+                      <FaBoxOpen className="clinics-button-icon" /> Inventory
+                    </Link>
+                    <Link
+                      to={`/${clinicId}/manage/members`}
+                      className="clinics-button outline"
+                      style={{
+                        borderColor: "#4CAF50",
+                        color: "#4CAF50",
+                      }}
+                    >
+                      <FiSettings className="manage-members-icon" />
+                      Manage Members
+                    </Link>
+                  </>
+                )}
+
+                {currentUser &&
+                  currentUser.clinicMemberships?.some(
+                    (membership) =>
+                      (membership.clinicId === clinic._id ||
+                        membership.clinicId === clinic.shortId ||
+                        (membership.clinicId &&
+                          membership.clinicId.toString() ===
+                            clinic._id?.toString())) &&
+                      (membership.role === "Doctor" ||
+                        membership.role === "Nurse")
+                  ) && (
+                    <Link
+                      to={`/${clinicId}/dashboard`}
+                      className="clinics-button outline"
+                    >
+                      Dashboard
+                    </Link>
+                  )}
+
+                {currentUser &&
+                  currentUser.clinicMemberships?.some(
+                    (membership) =>
+                      (membership.clinicId === clinic._id ||
+                        membership.clinicId === clinic.shortId ||
+                        (membership.clinicId &&
+                          membership.clinicId.toString() ===
+                            clinic._id?.toString())) &&
+                      membership.role === "Receptionist"
+                  ) && (
+                    <a
+                      href={`${import.meta.env.VITE_FRONTEND_URL}/inventory-management?clinic=${clinicId}`}
+                      className="clinics-button outline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Inventory
+                    </a>
+                  )}
+              </div>
+            </div>
+
+            {isCreator && (
+              <div className="clinics-admin-actions">
+                <Link
+                  to={`/clinics/${clinicId}/edit`}
+                  className="clinics-icon-button"
+                  title="Edit Clinic"
+                >
+                  <FaEdit style={{ color: "#1976d2" }} />
+                </Link>
+                <button
+                  className="clinics-icon-button"
+                  title="Delete Clinic"
+                  onClick={() => confirmDeleteClinic(clinicId)}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  <FaTrash style={{ color: "#d32f2f" }} />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
+      );
+    })
+  )}
+</div>
+
         <ToastContainer />
       </div>
       {showConfirmModal && (
