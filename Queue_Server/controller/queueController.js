@@ -141,12 +141,17 @@ exports.joinQueue = async (req, res) => {
 
   try {
     const now = new Date();
-    const openTime = new Date(now);
+    const istNow = new Date(
+      now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+    );
+
+    const openTime = new Date(istNow);
     openTime.setHours(8, 0, 0, 0);
-    const closeTime = new Date(now);
+
+    const closeTime = new Date(istNow);
     closeTime.setHours(22, 0, 0, 0);
 
-    if (now < openTime || now > closeTime) {
+    if (istNow < openTime || istNow > closeTime) {
       return res.status(400).json({
         message:
           "Clinic is closed. Please register between 8:00 AM and 10:00 PM.",
