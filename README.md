@@ -39,23 +39,24 @@
 
 ## 📁 Project Structure
 
-├── Frontend/                     # React-based user interface
-├── Credentials_Server/           # Handles credentials and clinics
-├── Contact_Server/               # Handles contactus
-├── Inventory_Server/             # Inventory Backend
-├── Invite_Server/                # Role based access
-├── Queue_Server/                 # Handles patient queue and doctor/nurse dashboard in real time
+MediQueue/
+├── Frontend/ # React-based user interface
+├── Credentials_Server/ # Handles credentials and clinics
+├── Contact_Server/ # Handles contact form submissions
+├── Inventory_Server/ # Inventory backend
+├── Invite_Server/ # Role-based access
+├── Queue_Server/ # Handles patient queue and real-time dashboard
 └── README.md
 
 
 > 🧪 **Note:** This is the **MVP (Minimum Viable Product)** version of MediQueue — built to validate core features like queue tracking, inventory, and clinic management.
 
+---
 
 ## 📧 Contact
 
 Made with ❤️ by **Yug Trivedi**  
-[Connect on LinkedIn]([https://www.linkedin.com/in/yug-trivedi](https://www.linkedin.com/in/yug-trivedi-7252102b0/))  
+🔗 [Connect on LinkedIn](https://www.linkedin.com/in/yug-trivedi-7252102b0/)  
 📬 [Email us at mediqueue24@gmail.com](mailto:mediqueue24@gmail.com)
-
 
 
