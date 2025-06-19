@@ -159,3 +159,24 @@
     margin-left: auto;
   }
 }
+
+.no-queue-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 2px dashed #ccc;
+  border-radius: 1rem;
+  background-color: #f9f9f9;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

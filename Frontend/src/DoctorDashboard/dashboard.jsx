@@ -153,6 +153,14 @@ const DoctorDashboard = () => {
           </button>
         </div>
       ))}
+      {queue.length === 0 && (
+        <div className="no-queue-message">
+           No patients have joined the queue yet.
+          <br />
+          Sit back and relax!
+        </div>
+      )}
+
       <ToastContainer />
     </div>
   );
