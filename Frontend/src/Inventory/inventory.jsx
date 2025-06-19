@@ -68,7 +68,11 @@ const Inventory = () => {
   useEffect(() => {
     if (clinicId) {
       axios
-        .get(`${import.meta.env.VITE_INVENTORY_SERVER_URL}/api/inventory/clinic/${clinicId}`)
+        .get(
+          `${
+            import.meta.env.VITE_INVENTORY_SERVER_URL
+          }/api/inventory/clinic/${clinicId}`
+        )
         .then((res) => {
           setClinicInventory(res.data);
         })
@@ -120,7 +124,9 @@ const Inventory = () => {
     try {
       if (isEditing) {
         await axios.put(
-          `${import.meta.env.VITE_INVENTORY_SERVER_URL}/api/inventory/update/${editId}`,
+          `${
+            import.meta.env.VITE_INVENTORY_SERVER_URL
+          }/api/inventory/update/${editId}`,
           {
             ...formData,
             quantity: parseInt(formData.quantity),
@@ -137,11 +143,14 @@ const Inventory = () => {
           draggable: true,
         });
       } else {
-        await axios.post(`${import.meta.env.VITE_INVENTORY_SERVER_URL}/api/inventory/add`, {
-          ...formData,
-          quantity: parseInt(formData.quantity),
-          clinicId,
-        });
+        await axios.post(
+          `${import.meta.env.VITE_INVENTORY_SERVER_URL}/api/inventory/add`,
+          {
+            ...formData,
+            quantity: parseInt(formData.quantity),
+            clinicId,
+          }
+        );
         toast.success(`Item added to inventory!`, {
           position: "bottom-right",
           autoClose: 2000,
@@ -210,7 +219,9 @@ const Inventory = () => {
   const handleConfirmDelete = async () => {
     try {
       await axios.delete(
-        `${import.meta.env.VITE_INVENTORY_SERVER_URL}/api/inventory/delete/${deleteId}`
+        `${
+          import.meta.env.VITE_INVENTORY_SERVER_URL
+        }/api/inventory/delete/${deleteId}`
       );
       setItems((prev) => prev.filter((item) => item._id !== deleteId));
       toast.success("Item deleted successfully!", {
@@ -398,7 +409,7 @@ const Inventory = () => {
         startY: 123,
         margin: { bottom: 50 },
         pageBreak: "auto",
-          rowPageBreak: "avoid",
+        rowPageBreak: "avoid",
         styles: {
           fontSize: 8,
           cellPadding: 5,
@@ -707,7 +718,7 @@ const Inventory = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="inventory-modal-header">
-              <h2 className="inventory-modal-title">Add New Item</h2>
+              <h2 className="inventory-modal-title">Manage Inventory Item</h2>
               <button
                 className="inventory-close-button"
                 onClick={() => setShowModal(false)}
