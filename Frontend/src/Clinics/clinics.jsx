@@ -305,7 +305,8 @@ const Clinics = () => {
             })
           ) : (
             <div className="no-results">
-              <p>No clinics found matching your search.</p>
+              <p> No clinics found/added matching your search.</p>
+              <p>Try adjusting your keywords or check spelling.</p>
             </div>
           )}
         </div>
